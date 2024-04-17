@@ -1,3 +1,4 @@
+#[derive(Debug, PartialEq)]
 pub enum Token {
     // ddl
     Table,
@@ -13,6 +14,7 @@ pub enum Token {
     From,
     Where,
     Set,
+    Values,
 
     Equal,      // =
     Semicolon,  // ;
