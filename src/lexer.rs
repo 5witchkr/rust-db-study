@@ -256,7 +256,8 @@ mod tests {
                 ],
             },
             TestCase {
-                input: "INSERT INTO table_name (column1, column2) VALUES ('value1', 123);".to_owned(),
+                input: "INSERT INTO table_name (column1, column2) VALUES ('value1', 123);"
+                    .to_owned(),
                 expected_tokens: vec![
                     Token::Insert,
                     Token::Into,
@@ -288,7 +289,8 @@ mod tests {
                 ],
             },
             TestCase {
-                input: "UPDATE table_name SET column1 = 'new_value' WHERE column2 = 123;".to_owned(),
+                input: "UPDATE table_name SET column1 = 'new_value' WHERE column2 = 123;"
+                    .to_owned(),
                 expected_tokens: vec![
                     Token::Update,
                     Token::Identifier("table_name".to_string()),
@@ -317,7 +319,7 @@ mod tests {
                     Token::Semicolon,
                     Token::EOF,
                 ],
-            }, 
+            },
         ];
         let mut case_num = 0;
         for case in test_cases {
