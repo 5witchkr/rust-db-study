@@ -13,7 +13,7 @@ pub struct CreateStatement {
     columns: Vec<ColumnDefinition>,
 }
 #[derive(Debug)]
-struct DropStatement {
+pub struct DropStatement {
     table_name: String,
 }
 #[derive(Debug)]
@@ -73,5 +73,11 @@ impl CreateStatement {
 impl ColumnDefinition {
     pub fn new(name: String) -> Self {
         ColumnDefinition { name }
+    }
+}
+
+impl DropStatement {
+    pub fn new(table_name:String) -> Self {
+        DropStatement { table_name }
     }
 }
