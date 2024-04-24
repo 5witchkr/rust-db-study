@@ -22,7 +22,7 @@ struct SelectStatement {
     columns: Vec<String>,
 }
 #[derive(Debug)]
-struct InsertStatement {
+pub struct InsertStatement {
     table_name: String,
     columns: Vec<String>,
     values: Vec<Value>,
@@ -43,7 +43,7 @@ pub struct ColumnDefinition {
     name: String,
 }
 #[derive(Debug)]
-struct Value {
+pub struct Value {
     value: String,
 }
 #[derive(Debug)]
@@ -77,7 +77,23 @@ impl ColumnDefinition {
 }
 
 impl DropStatement {
-    pub fn new(table_name:String) -> Self {
+    pub fn new(table_name: String) -> Self {
         DropStatement { table_name }
+    }
+}
+
+impl InsertStatement {
+    pub fn new(table_name: String, columns: Vec<String>, values: Vec<Value>) -> Self {
+        InsertStatement {
+            table_name,
+            columns,
+            values,
+        }
+    }
+}
+
+impl Value {
+    pub fn new(value: String) -> Self {
+        Value { value }
     }
 }
