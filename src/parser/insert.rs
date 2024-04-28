@@ -1,5 +1,3 @@
-use std::thread::panicking;
-
 use crate::{
     ast::{InsertStatement, SQLStatement, Value},
     token::Token,
@@ -61,7 +59,7 @@ where
                 }
             }
         }
-        Err(ERR::cause("Parse err"))
+        Err(ERR::cause("parse fail insert"))
     }
 }
 

@@ -57,4 +57,9 @@ impl DBError for ParserError {
     fn cause(msg: &str) -> Self {
         ParserError(msg.to_string())
     }
+
+    fn and_cause(mut self, msg: &str) -> Self {
+        self.0.push_str(msg);
+        self
+    }
 }

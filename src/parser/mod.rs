@@ -1,4 +1,5 @@
-mod create_table;
-mod drop_table;
+mod create;
+mod delete;
+mod drop;
 mod insert;
 mod parser;

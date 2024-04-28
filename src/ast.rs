@@ -34,7 +34,7 @@ struct UpdateStatement {
     where_clause: Option<WhereClause>,
 }
 #[derive(Debug)]
-struct DeleteStatement {
+pub struct DeleteStatement {
     table_name: String,
     where_clause: Option<WhereClause>,
 }
@@ -52,13 +52,13 @@ struct SetClause {
     value: Value,
 }
 #[derive(Debug)]
-struct WhereClause {
+pub struct WhereClause {
     condition: Expression,
 }
 #[derive(Debug)]
-enum Expression {
-    Column(String),
-    Value(Value),
+pub struct Expression {
+    column: String,
+    value: Value,
 }
 
 impl CreateStatement {
@@ -95,5 +95,26 @@ impl InsertStatement {
 impl Value {
     pub fn new(value: String) -> Self {
         Value { value }
+    }
+}
+
+impl DeleteStatement {
+    pub fn new(table_name: String, where_clause: Option<WhereClause>) -> Self {
+        DeleteStatement {
+            table_name,
+            where_clause,
+        }
+    }
+}
+
+impl WhereClause {
+    pub fn new(condition: Expression) -> Self {
+        WhereClause { condition }
+    }
+}
+
+impl Expression {
+    pub fn new(column: String, value: Value) -> Self {
+        Expression { column, value }
     }
 }

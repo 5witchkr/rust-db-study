@@ -22,6 +22,10 @@ impl DBError for LexerError {
     fn cause(msg: &str) -> Self {
         LexerError(msg.to_string())
     }
+    fn and_cause(mut self, msg: &str) -> Self {
+        self.0.push_str(msg);
+        self
+    }
 }
 
 struct SimpleLexer<ERR> {
