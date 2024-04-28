@@ -46,7 +46,7 @@ mod tests {
     use crate::{
         ast::{CreateStatement, SQLStatement},
         parser::{
-            create_table::CreateStatementParser,
+            create::CreateStatementParser,
             parser::{Parser, ParserError, SQLParser, SimpleParser},
         },
         token::Token,

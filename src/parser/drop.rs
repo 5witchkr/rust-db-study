@@ -27,7 +27,7 @@ mod tests {
     use crate::{
         ast::SQLStatement,
         parser::{
-            drop_table::DropStatementParser,
+            drop::DropStatementParser,
             parser::{ParserError, SQLParser, SimpleParser},
         },
         token::Token,
