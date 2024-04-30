@@ -28,7 +28,7 @@ pub struct InsertStatement {
     values: Vec<Value>,
 }
 #[derive(Debug)]
-struct UpdateStatement {
+pub struct UpdateStatement {
     table_name: String,
     set_clauses: Vec<SetClause>,
     where_clause: Option<WhereClause>,
@@ -43,11 +43,12 @@ pub struct ColumnDefinition {
     name: String,
 }
 #[derive(Debug)]
-pub struct Value {
-    value: String,
+pub enum Value {
+    StrValue(String),
+    NumValue(f64),
 }
 #[derive(Debug)]
-struct SetClause {
+pub struct SetClause {
     field: String,
     value: Value,
 }
@@ -92,12 +93,6 @@ impl InsertStatement {
     }
 }
 
-impl Value {
-    pub fn new(value: String) -> Self {
-        Value { value }
-    }
-}
-
 impl DeleteStatement {
     pub fn new(table_name: String, where_clause: Option<WhereClause>) -> Self {
         DeleteStatement {
@@ -116,5 +111,25 @@ impl WhereClause {
 impl Expression {
     pub fn new(column: String, value: Value) -> Self {
         Expression { column, value }
+    }
+}
+
+impl UpdateStatement {
+    pub fn new(
+        table_name: String,
+        set_clauses: Vec<SetClause>,
+        where_clause: Option<WhereClause>,
+    ) -> Self {
+        UpdateStatement {
+            table_name,
+            set_clauses,
+            where_clause,
+        }
+    }
+}
+
+impl SetClause {
+    pub fn new(field: String, value: Value) -> Self {
+        SetClause { field, value }
     }
 }

@@ -34,7 +34,7 @@ where
                                                 table_name,
                                                 Some(WhereClause::new(Expression::new(
                                                     column,
-                                                    Value::new(value),
+                                                    Value::StrValue(value),
                                                 ))),
                                             )));
                                         }

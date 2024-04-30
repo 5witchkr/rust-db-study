@@ -40,7 +40,7 @@ where
                         let mut values = Vec::new();
                         loop {
                             if let Some(Token::StringLiteral(value)) = parser.next_token() {
-                                values.push(Value::new(value));
+                                values.push(Value::StrValue(value));
                                 if parser.peek_token() == Some(&Token::Comma) {
                                     parser.consume_token();
                                 } else {
