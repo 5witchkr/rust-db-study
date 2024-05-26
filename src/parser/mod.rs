@@ -4,3 +4,4 @@ mod drop;
 mod insert;
 mod parser;
 mod update;
+mod select;

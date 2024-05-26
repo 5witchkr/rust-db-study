@@ -1,4 +1,4 @@
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum SQLStatement {
     CreateTable(CreateStatement),
     DropTable(DropStatement),
@@ -7,56 +7,56 @@ pub enum SQLStatement {
     Update(UpdateStatement),
     Delete(DeleteStatement),
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct CreateStatement {
     table_name: String,
     columns: Vec<ColumnDefinition>,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct DropStatement {
     table_name: String,
 }
-#[derive(Debug)]
-struct SelectStatement {
+#[derive(Debug, PartialEq)]
+pub struct SelectStatement {
     table_name: String,
     columns: Vec<String>,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct InsertStatement {
     table_name: String,
     columns: Vec<String>,
     values: Vec<Value>,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct UpdateStatement {
     table_name: String,
     set_clauses: Vec<SetClause>,
     where_clause: Option<WhereClause>,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct DeleteStatement {
     table_name: String,
     where_clause: Option<WhereClause>,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct ColumnDefinition {
     name: String,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Value {
     StrValue(String),
     NumValue(f64),
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct SetClause {
     field: String,
     value: Value,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct WhereClause {
     condition: Expression,
 }
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Expression {
     column: String,
     value: Value,
@@ -133,3 +133,10 @@ impl SetClause {
         SetClause { field, value }
     }
 }
+
+impl SelectStatement {
+    pub fn new(table_name: String, columns: Vec<String>) -> Self {
+        SelectStatement { table_name, columns }
+    }
+}
+

@@ -51,7 +51,7 @@ impl SimpleParser {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct ParserError(String);
 impl DBError for ParserError {
     fn cause(msg: &str) -> Self {
